@@ -1,0 +1,32 @@
+// ############################################################################
+// # Evooq                                                                    #
+// # The E>olution of Investments                                             #
+// #                                                                          #
+// # doddy_hub/api/v1/protos/service.proto                                    #
+// #                                                                          #
+// # Handcrafted since 2019 by Evooq SA                                       #
+// # All rights reserved                                                      #
+// #                                                                          #
+// #                                                                          #
+// # Description: Protobuf definitions for the Content Hub service API.       #
+// ############################################################################
+
+syntax = "proto3";
+
+package api;
+
+message EmptyRequest {}
+
+message Request { 
+  string document = 1;
+}
+
+message Response {
+  int32 status = 1;
+  string document = 2;
+}
+
+service HubService {
+  // Submit a new document, giving its URL
+  rpc Submit(Request) returns (Response) {}
+}

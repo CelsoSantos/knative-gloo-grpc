@@ -1,0 +1,22 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: gslides
+  namespace: default
+spec:
+  virtualHost:
+    routes:
+    - matcher:
+        methods:
+        - POST
+        prefix: /submit/
+      routeAction:
+        single:
+          destinationSpec:
+            grpc:
+              function: Submit
+              package: api
+              service: HubService
+          upstream:
+            name: default-gslides-parser-gghrh-80
+            namespace: default
