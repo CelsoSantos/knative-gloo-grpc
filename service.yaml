@@ -9,4 +9,4 @@ spec:
       revisionTemplate:
         spec:
           container:
-            image: docker.io/celsosantos/gslides-knative # The URL to the image of the app
+            image: docker.io/celsosantos/slides-knative # The URL to the image of the app

@@ -34,8 +34,8 @@ func (c *hubService) Submit(ctx context.Context, in *pb.Request) (*pb.Response, 
 
 func main() {
 
-	// create a listener on TCP port 80
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 80))
+	// create a listener on TCP port 8080
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", 8080))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}

@@ -25,4 +25,4 @@ COPY --from=build /go/bin/app /
 
 CMD ["/app"]
 
-EXPOSE 80
+EXPOSE 8080
