@@ -21,15 +21,15 @@ type hubService struct{}
 func (c *hubService) Submit(ctx context.Context, in *pb.Request) (*pb.Response, error) {
 	log.Printf("Received Submission")
 
-	docID := in.Document
+	input := in.Document
 
-	if len(docID) > 0 {
-		log.Printf(in.Document)
+	if len(input) > 0 {
+		log.Printf(input)
 	} else {
-		log.Printf("Invalid DocID")
+		log.Printf("Invalid Input")
 	}
 
-	return &pb.Response{Status: 200, Document: "XXX"}, nil
+	return &pb.Response{Status: 200, Document: "Input Value: " + input}, nil
 }
 
 func main() {

@@ -1,8 +1,8 @@
 apiVersion: gateway.solo.io/v1
 kind: VirtualService
 metadata:
-  name: gslides
-  namespace: default
+  name: knative-gloo-grpc
+  namespace: gloo-system # important! create the VirtualService on the gloo-system
 spec:
   virtualHost:
     routes:
@@ -16,7 +16,9 @@ spec:
             grpc:
               function: Submit
               package: api
+              parameters:
+                path: /submit/{document}
               service: HubService
           upstream:
             name: CHANGEME
-            namespace: default
+            namespace: gloo-system

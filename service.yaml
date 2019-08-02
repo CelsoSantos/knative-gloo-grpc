@@ -1,12 +1,13 @@
-apiVersion: serving.knative.dev/v1alpha1 # Current version of Knative
+apiVersion: serving.knative.dev/v1beta1 # Current version of Knative
 kind: Service
 metadata:
-  name: slides-parser # The name of the app
+  name: knative-gloo-grpc # The name of the app
   namespace: default # The namespace the app will use
 spec:
-  runLatest:
-    configuration:
-      revisionTemplate:
-        spec:
-          container:
-            image: docker.io/celsosantos/slides-knative # The URL to the image of the app
+  template:
+    spec:
+      containers:
+      - image: docker.io/celsosantos/knative-gloo-grpc # The URL to the image of the app
+        ports:
+          - name: h2c # this is really important, otherwise knative doesn't know it's grpc
+            containerPort: 8080
